@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "immutable-proxy"
+version = "0.1.0"
+description = "Provides a proxy to an object that prevents mutation at any depth"
+readme = "README.md"
+authors = [
+    {name = "José Carlos Díaz-Ramos", email = "carlitos.diaz.ramos@gmail.com"},
+]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Topic :: Utilities",
+]
+keywords = ["immutable object", "proxy"]
+requires-python = ">=3.9"
+
+[tool.setuptools]
+packages = ["immutable"]
+
+[project.optional-dependencies]
+dev = ["pytest"]

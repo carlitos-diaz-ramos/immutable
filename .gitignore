@@ -1,0 +1,11 @@
+immutable/__pycache__
+tests/__pycache__
+tests/*.ipynb
+tests/runcoverage.bat
+.coverage
+tests/.coverage
+.tox
+.vscode
+dist
+old
+immutable_proxy.egg-info/

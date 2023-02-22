@@ -9,3 +9,5 @@ tests/.coverage
 dist
 old
 immutable_proxy.egg-info/
+.mypy_cache
+.pytest_cache

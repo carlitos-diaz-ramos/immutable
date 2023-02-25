@@ -20,6 +20,9 @@ classifiers = [
 keywords = ["immutable object", "proxy"]
 requires-python = ">=3.9"
 
+[project.urls]
+Homepage = "https://github.com/carlitos-diaz-ramos/immutable"
+
 [tool.setuptools]
 packages = ["immutable"]
 

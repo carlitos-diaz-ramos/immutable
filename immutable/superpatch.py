@@ -2,7 +2,7 @@
 superpatch.py is a module that defines a replacement for built-in super().
 '''
 
-from inspect import currentframe, getmro
+from inspect import currentframe, getmro, ismemberdescriptor
 from typing import Iterable, Any, Optional, Union, Final, final
 
 from .immutable import _ImmutableWrapper
@@ -84,7 +84,14 @@ class _ClassProxy():
         attribute = _find_attribute(mro, attr) 
         if instance is None:
             return attribute
-        return lambda *args, **kwargs: attribute(instance, *args, **kwargs)
+        if ismemberdescriptor(attribute):
+            # This descriptor seems to check the type for functions written in 
+            # C, so we cannot return a function as in the subsequent code; 
+            # thus we called __get__ directly on the descriptor.
+            return attribute.__get__(instance, None)
+        def _method(*args, **kwargs):
+            return attribute(instance, *args, **kwargs)
+        return _method
 
 
 def _find_attribute(mro: Iterable[type], attr: str) -> Any:
